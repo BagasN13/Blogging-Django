@@ -68,7 +68,7 @@ def admin_kategori_delete(request, id_kategori):
 
     return redirect(admin_kategori_list)
 
-########################## Blogpost ###############################
+########################## Blogpost ################################
 
 @login_required (login_url='/auth-login')
 def admin_artikel_list(request):

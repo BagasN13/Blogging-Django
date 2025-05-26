@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet", href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Toko Buku</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/buku">Buku</a></li>
+                <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-text">
+                <h1>Bagasnanta Purnomo</h1>
+                <h2>Fresh Graduate</h2>
+            </div>
+            <img src="{% static 'picture/Picture2.png' %}" alt="Bagasnanta Purnomo" class="gambar-profile">
+        </div>
+
+        <div class="sidebar">
+            <div class="section">
+                <h3>DATA DIRI</h3>
+                <p><strong>Tempat / Tanggal Lahir</strong><br>Tenggarong, 13 Mei 2005</p>
+                <p><strong>Jenis Kelamin</strong><br>laki-laki</p>
+                <p><strong>Status</strong><br>Belum Menikah</p>
+                <p><strong>Kewarganegaraan</strong><br>Indonesia</p>
+            </div>
+        
+            <div class="section">
+                <h3>KONTAK</h3>
+                <p>+6281348695042</p>
+                <p>hello@bagasnanta.com</p>
+                <p>Samarinda Kota, Sempaja</p>
+            </div>
+            
+            <div class="section">
+                <h3>SOSIAL MEDIA</h3>
+                <p>@bagasnanta</p>
+                <p>bagasnanta.com</p>
+            </div>
+
+            <div class="section">
+                <h3>HOBI</h3>
+                <ul>
+                    <li>Bermain Komputer</li>
+                    <li>Badminton</li>
+                    <li>Membaca Buku</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-utama">
+            <div class="section">
+                <h3>TENTANG SAYA</h3>
+                <p>Saya merupakan seorang profesional dalam bidang engineering network, dan telah berpengalaman lebih dari 2 tahun dalam membuat planning dan topologi jaringan. Memiliki jiwa pemimpin serta mampu bekerja dalam tim.</p>
+            </div>
+        
+        <div class="section">
+            <h3>PENDIDIKAN</h3>
+            <ul>
+                <li>SMK Negeri 1 Tenggarong - 2023</li>
+                <li>MTSN 1 Kutai Kartanegara - 2020</li>
+                <li>SD Negeri 002 Tenggarong - 2017</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>PENGALAMAN KERJA</h3>
+            <p><strong>Klinik Komputer Tenggarong (Magang)</strong></p>
+            <ul>
+                <li>Menganalisis data penjualan dan memantau pemasokan barang</li>
+                <li>Memperbaiki komputer dan laptop</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>KEMAMPUAN</h3>
+            <ul>
+                <li>Pasif berbahasa Indonesia dan Inggris</li>
+                <li>Mampu memperbaiki komputer</li>
+                <li>Mampu menginstalasi dan maintenance perangkat jaringan</li>
+                <li>Mampu mengontrol data dan jaringan</li>
+                <li>Mampu bekerja dibawah tekanan</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

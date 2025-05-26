@@ -1,0 +1,82 @@
+{% extends 'landingpage/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="wrapper">
+    <div class="page-header header-filter">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('../assets/img/claudia-ramirez.jpg');"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h1 class="title"> Sinopsis Buku </h1>
+            <!-- <div class="author">
+              <img src="../assets/img/p10.jpg" alt="..." class="avatar img-raised">
+            </div> -->
+            <!-- <br/> -->
+            <!-- <h4 class="description">Mark Byron</h4> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h6 class="category">{{ artikel.kategori }}</h6>
+            <img src="{{ artikel.gambar.url }}" style="width: 80%;">
+            <h3 class="title">{{ artikel.judul }}</h3>
+            <p>{{ artikel.konten }} </p>
+            <br />
+            <p>{{ artikel.created_at }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <div class="col-md-12">
+          <h2 class="title text-center">Lihat Sinopsis Lainnya</h2>
+          <br />
+          <div class="blogs-1">
+            <div class="row">
+              <div class="col-md-12 ml-auto mr-auto">
+                {% for artikel in artikel_lainnya %}
+                <div class="card card-blog card-plain blog-horizontal">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card-image">
+                        <a href="#pablo">
+                          <img class="img rounded" src="{{ artikel.gambar.url }}" style="width: 40%;" />
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card-body">
+                        <h3 class="card-title">
+                          <a href="{% url 'detail_artikel' artikel.id %}">{{ artikel.judul }}</a>
+                        </h3>
+                        <p class="card-description">
+                            {{ artikel.konten }}
+                        </p>
+                        <div class="author">
+                          <img src="{% static 'landingpage/assets/img/james.jpg' %}" alt="..." class="avatar img-raised">
+                          <div class="text">
+                            <span class="name">{{ artikel.author }}</span>
+                            <div class="meta">{{ artikel.created_at }}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

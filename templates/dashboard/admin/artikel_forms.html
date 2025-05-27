@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="{% static 'dashboard/assets/css/argon.css '%}?v=1.2.1" type="text/css"> 
     <style>
       .django-ckeditor-widget {
-        width: 100%:
+        width: 100%;
       }
     </style>
     <link href="{% static 'django_ckeditor_5/dist/styles.css' %}" media="all" rel="stylesheet" />
-    <script src="{% static 'django_ckeditor_5/dist/bundle.js '%}"></script>
+    <script src="{% static 'django_ckeditor_5/dist/bundle.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -52,7 +52,7 @@
               </div>
               <!-- Card body -->
               <div class="card-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" novalidate>
                     {% csrf_token %}
                   <!-- Input groups with icon -->
                   <div class="row">
@@ -102,7 +102,7 @@
                         </div>
                       </div>
                     </div>
-                </forM>
+                </form>
 
 {% endblock content %}
 

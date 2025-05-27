@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from django.contrib import messages
 from artikel.models import Kategori, Blogpost
 from artikel.forms import KategoriForms, BlogpostForms
 
@@ -33,8 +35,9 @@ def admin_kategori_tambah(request):
         forms = KategoriForms(request.POST)
         if forms.is_valid():
             pub = forms.save(commit=False)
-            pub.creared_by = request.user
+            pub.created_by = request.user
             pub.save()
+            messages.success(request, 'berhasil tambah kategori')
             return redirect(admin_kategori_list)
     forms = KategoriForms()
     context = {
@@ -50,8 +53,9 @@ def admin_kategori_update(request, id_kategori):
         forms = KategoriForms(request.POST, instance=kategori)
         if forms.is_valid():
             pub = forms.save(commit=False)
-            pub.creared_by = request.user
+            pub.created_by = request.user
             pub.save()
+            messages.success(request, 'berhasil melakukan update kategori')
             return redirect(admin_kategori_list)
     forms = KategoriForms(instance=kategori)
     context = {
@@ -63,8 +67,9 @@ def admin_kategori_update(request, id_kategori):
 def admin_kategori_delete(request, id_kategori):
     try:
         Kategori.objects.get(id=id_kategori).delete()
+        messages.success(request, 'berhasil delete kategori')
     except:
-        pass
+        messages.error(request, 'gagal delete kategori')
 
     return redirect(admin_kategori_list)
 
@@ -86,8 +91,9 @@ def admin_artikel_tambah(request):
         forms = BlogpostForms(request.POST, request.FILES)
         if forms.is_valid():
             pub = forms.save(commit=False)
-            pub.creared_by = request.user
+            pub.created_by = request.user
             pub.save()
+            messages.success(request, 'berhasil tambah artikel')
             return redirect(admin_artikel_list)
         
     forms = BlogpostForms()
@@ -104,8 +110,9 @@ def admin_artikel_update(request, id_artikel):
         forms = BlogpostForms(request.POST, request.FILES, instance=artikel)
         if forms.is_valid():
             pub = forms.save(commit=False)
-            pub.creared_by = request.user
+            pub.created_by = request.user
             pub.save()
+            messages.success(request, 'berhasil melakukan update artikel')
             return redirect(admin_artikel_list)
     forms = BlogpostForms(instance=artikel)
     context = {
@@ -117,7 +124,8 @@ def admin_artikel_update(request, id_artikel):
 def admin_artikel_delete(request, id_artikel):
     try:
         Blogpost.objects.get(id=id_artikel).delete()
+        messages.success(request, 'berhasil delete artikel')
     except:
-        pass
+        messages.error(request, 'gagal delete artikel')
 
     return redirect(admin_artikel_list)

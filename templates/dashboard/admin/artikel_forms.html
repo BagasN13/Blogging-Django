@@ -5,7 +5,14 @@
     <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/select2/dist/css/select2.min.css '%}">
     <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/quill/dist/quill.core.css '%}">
     <link rel="stylesheet" href="{% static 'dashboard/assets/css/argon.css '%}?v=1.2.1" type="text/css"> 
-{% endblock css %}
+    <style>
+      .django-ckeditor-widget {
+        width: 100%:
+      }
+    </style>
+    <link href="{% static 'django_ckeditor_5/dist/styles.css' %}" media="all" rel="stylesheet" />
+    <script src="{% static 'django_ckeditor_5/dist/bundle.js '%}"></script>
+{% endblock %}
 
 {% block content %}
 
@@ -71,10 +78,10 @@
                         </div> <br />
 
                       <label>Konten</label>
-                      <div class="form-group">
-                        <div class="input-group input-group-merge">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class=""></i></span>
+                      <div class="">
+                        <div class="">
+                          <div class="">
+                            <span class=""><i class=""></i></span>
                           </div>
                           {{ forms.konten }}
                           {% comment %} <input class="form-control" placeholder="Nama Kategori" name="nama_kategori" type="text"> {% endcomment %}
@@ -108,6 +115,7 @@
   <script src="{% static 'dashboard/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js '%}"></script>
   <script src="{% static 'dashboard/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js '%}"></script>
   <!-- Optional JS -->
+  <script src="{% static 'django_ckeditor_5/dist/bundle.js '%}"></script>
   <script src="{% static 'dashboard/assets/vendor/select2/dist/js/select2.min.js '%}"></script>
   <script src="{% static 'dashboard/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js '%}"></script>
   <script src="{% static 'dashboard/assets/vendor/moment.min.js '%}"></script>

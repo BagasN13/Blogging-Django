@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django_ckeditor_5.fields import CKEditor5Field
+
 # Create your models here.
 
 class Kategori(models.Model):
@@ -18,7 +20,7 @@ class Kategori(models.Model):
 class Blogpost(models.Model):
     kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE)
     judul = models.CharField(max_length=200)
-    konten = models.TextField(blank=True, null=True)
+    konten = CKEditor5Field('Text', config_name='extends')
     gambar = models.ImageField(upload_to="artikel",blank=True, null=True)
 
 

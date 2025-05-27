@@ -1,4 +1,5 @@
 from django import forms
+from django_ckeditor_5.widgets import CKEditor5Widget
 from artikel.models import Kategori, Blogpost
 
 class KategoriForms(forms.ModelForm):
@@ -22,7 +23,8 @@ class BlogpostForms(forms.ModelForm):
             "kategori" : forms.Select(
                 attrs={
                     'class': 'form-control',
-                    'required': True
+                    'required': True,
+                    'id':""
                 }),
             
             "judul" : forms.TextInput(
@@ -31,11 +33,12 @@ class BlogpostForms(forms.ModelForm):
                     'required': True
                 }),
 
-            "konten" : forms.Textarea(
-                attrs={
-                    'class': 'form-control',
-                    'required': True
-                }),
+            "konten" : CKEditor5Widget(
+                  attrs={
+                      "class": "django_ckeditor_5"
+                      }
+                      , config_name="extends"
+              ),
 
             # "gambar" : forms.TextInput(
             #     attrs={

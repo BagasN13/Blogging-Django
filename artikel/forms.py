@@ -18,13 +18,12 @@ class KategoriForms(forms.ModelForm):
 class BlogpostForms(forms.ModelForm):
     class Meta:
         model = Blogpost
-        fields = ('kategori', 'judul', 'konten', 'gambar', 'created_by',)
+        fields = ('kategori', 'judul', 'konten', 'gambar', )
         widgets = {
             "kategori" : forms.Select(
                 attrs={
                     'class': 'form-control',
                     'required': True,
-                    'id':""
                 }),
             
             "judul" : forms.TextInput(
@@ -39,6 +38,7 @@ class BlogpostForms(forms.ModelForm):
                       }
                       , config_name="extends"
               ),
+        }
 
             # "gambar" : forms.TextInput(
             #     attrs={
@@ -51,7 +51,7 @@ class BlogpostForms(forms.ModelForm):
             #         'class': 'form-control',
             #         'required': True
             #     }),
-        }
+        # }
 
 
 

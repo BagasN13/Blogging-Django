@@ -1,4 +1,6 @@
 {% load static %}
+{% load auth_extras %}
+
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
       <!-- Brand -->
@@ -86,6 +88,7 @@
                 </ul>
               </div>
             </li> {% endcomment %}
+
             <li class="nav-item">
               <div class="collapse" id="navbar-components">
                 <ul class="nav nav-sm flex-column">
@@ -147,8 +150,9 @@
                 </ul>
               </div>
             </li>
+        
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard/artikel-list" aria-expanded="false" aria-controls="navbar-forms">
+              <a class="nav-link" href="{% url "artikel_list" %}" aria-expanded="false" aria-controls="navbar-forms">
                 <i class="ni ni-single-copy-04 text-pink"></i>
                 <span class="nav-link-text">Artikel</span>
               </a>
@@ -159,6 +163,8 @@
                 <span class="nav-link-text">Charts</span>
               </a>
             </li>
+        
+        {% if request.user|has_group:'operator' %}
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -188,12 +194,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard-pro/docs/plugins/charts.html" target="_blank">
+              <a class="nav-link" href="{% url "admin_management_user_list" %}">
                 <i class="ni ni-single-02"></i>
                 <span class="nav-link-text">Users</span>
               </a>
             </li>
           </ul>
+        {% endif %}
         </div>
       </div>
     </div>

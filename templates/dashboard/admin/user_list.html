@@ -16,6 +16,10 @@
   <!-- Icons -->
   <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/nucleo/css/nucleo.css '%}" type="text/css">
   <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css '%}" type="text/css">
+  
+  <!-- Font Awesome 6 CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
   <!-- Page plugins -->
   <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css '%}">
   <link rel="stylesheet" href="{% static 'dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css '%}">
@@ -55,42 +59,59 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header">
-              <h3 class="mb-0">Daftar Kategori</h3>
+              <h3 class="mb-0">Daftar Penggguna</h3>
               <p class="text-sm mb-0">
-                This is an exmaple of datatable using the well known datatables.net plugin. This is a minimal setup in order to get started fast.
+                Pengguna yang Telah Terdaftar dalam Platform Ini
               </p> <br>
-              <a class="btn btn-outline-warning" href="{% url "admin_kategori_tambah" %}">+ Tambah</a>
+              <a class="btn btn-outline-warning" href="">+ Tambah</a>
             </div>
             <div class="table-responsive py-4">
               <table class="table table-flush" id="datatable-basic">
                 <thead class="thead-light">
                   <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Creted At</th>
-                    <th>Created By</th>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Nama Lengkap</th>
+                    <th class="text-center">Is Staff</th>
+                    <th class="text-center">Groups</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Created At</th>
-                    <th>Created By</th>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Nama Lengkap</th>
+                    <th class="text-center">Is Staff</th>
+                    <th class="text-center">Groups</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                {% for kat in kategori %}
+                {% for user in daftar_user %}
                   <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ kat.nama }}</td>
-                    <td>{{ kat.created_at }}</td>
-                    <td>{{ kat.created_by }}</td>
+                    <td class="text-center">{{ forloop.counter }}</td>
+                    <td class="text-center"> <span class="badge badge-primary">{{ user.username }}</span></td>
+                    <td class="text-center text-dark">{{ user.first_name }} {{ user.last_name }}</td>
                     <td class="text-center">
-                        <a class="btn btn-outline-warning" href="{% url "admin_kategori_update" kat.id %}">Edit</a>
-                        <a class="btn btn-outline-danger" onclick="return confirm('yakin ingin di hapus?')" href="{% url "admin_kategori_delete" kat.id %}">Delete</a>
+                      {% if user.is_staff %}
+                      <i class="fa-solid fa-check text-success" style="font-size: 18px;"></i>
+                      {% else %}
+                      <i class="fa-solid fa-xmark text-warning" style="font-size: 20px;"></i>
+                      {% endif %}
+                    </td>
+                    
+                    <td class="text-center">
+                      {% for group in user.groups.all  %}
+                      <span class="badge badge-info">{{group.name}}</span>
+                      {% empty %}
+                      <span class="badge badge-info">------</span>
+                      {% endfor %}
+                    </td>
+                    
+                    <td class="text-center">
+                        <a class="btn btn-outline-warning" href="">Edit</a>
+                        <a class="btn btn-outline-danger"  onclick="return confirm('yakin ingin di hapus?')" href="">Delete</a>
                     </td>
                   </tr>
                 {% endfor %}
@@ -641,7 +662,7 @@
   <!-- Argon JS -->
 <script src="{% static 'dashboard/assets/js/argon.js '%}?v=1.2.1"></script>
   <!-- Demo JS - remove this in your project -->
-<script src="{% static 'dashboard/assets/js/demo.min.js '%}"></script>
+{% comment %} <script src="{% static 'dashboard/assets/js/demo.min.js '%}"></script> {% endcomment %}
 
 {% comment %} <script>
     const dataTableSearch = new simpleDatatables.DataTable('#datatable-search',{

@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django_ckeditor_5.widgets import CKEditor5Widget
 from artikel.models import Kategori, Blogpost
 
@@ -39,6 +40,36 @@ class BlogpostForms(forms.ModelForm):
                       , config_name="extends"
               ),
         }
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'is_staff']
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'required': True,
+                'placeholder': 'Nama Depan',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'required': True,
+                'placeholder': 'Nama Belakang',
+            }),
+            'is_staff': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+            }),
+        }
+
+
+
+
+
+
+
+
+
+
 
             # "gambar" : forms.TextInput(
             #     attrs={

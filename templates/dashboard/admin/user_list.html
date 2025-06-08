@@ -62,8 +62,8 @@
               <h3 class="mb-0">Daftar Penggguna</h3>
               <p class="text-sm mb-0">
                 Pengguna yang Telah Terdaftar dalam Platform Ini
-              </p> <br>
-              <a class="btn btn-outline-warning" href="">+ Tambah</a>
+              </p> <br> 
+
             </div>
             <div class="table-responsive py-4">
               <table class="table table-flush" id="datatable-basic">
@@ -110,7 +110,7 @@
                     </td>
                     
                     <td class="text-center">
-                        <a class="btn btn-outline-warning" href="">Edit</a>
+                        <a class="btn btn-outline-warning" href="{% url "admin_management_user_edit" user.id %}">Edit</a>
                         <a class="btn btn-outline-danger"  onclick="return confirm('yakin ingin di hapus?')" href="">Delete</a>
                     </td>
                   </tr>

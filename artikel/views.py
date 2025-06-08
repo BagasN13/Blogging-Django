@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect
 
 from django.contrib import messages
 from artikel.models import Kategori, Blogpost
-from artikel.forms import KategoriForms, BlogpostForms
+from artikel.forms import KategoriForms, BlogpostForms, UserEditForm
 
 # Create your views here.
 def in_operator(user):
@@ -205,5 +206,47 @@ def admin_management_user_list(request):
     daftar_user = User.objects.all()
     context = {
         "daftar_user":daftar_user
+    }
+    return render(request, template_name, context)
+
+
+@login_required (login_url='/auth-login')
+@user_passes_test(in_operator, login_url='/')
+def admin_management_user_edit(request, user_id):
+    template_name = 'dashboard/admin/user_edit.html'
+    user = get_object_or_404(User, pk=user_id)
+    all_groups = Group.objects.all()
+    group_user = []
+    for group in user.groups.all():
+        group_user.append(group.name)
+
+    if request.method == 'POST':
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        is_staff = request.POST.get("is_staff")
+        groups_checked = request.POST.getlist('groups')
+
+        if is_staff == None:
+            is_staff = False
+        
+        else:
+            is_staff = True
+        user.first_name = first_name
+        user.last_name = last_name
+        user.is_staff = is_staff
+        user.groups.set(Group.objects.filter(id__in=groups_checked))
+        user.save()
+
+        messages.success(request, f"Berhasil update user {user.username}")
+        return redirect('admin_management_user_list')  # Redirect ke halaman daftar user setelah berhasil
+    
+    else:
+        forms = UserEditForm(instance=user)
+
+    context = {
+        'user': user,
+        'all_groups': all_groups,
+        'group_user': group_user,
+        
     }
     return render(request, template_name, context)

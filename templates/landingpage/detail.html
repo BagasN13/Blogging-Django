@@ -25,7 +25,7 @@
             <h6 class="category">{{ artikel.kategori }}</h6>
             <img src="{{ artikel.gambar.url }}" style="width: 80%;">
             <h3 class="title">{{ artikel.judul }}</h3>
-            <p>{{ artikel.konten|safe }} </p>
+            {{ artikel.konten|safe }}
             <br />
             <p>{{ artikel.created_at }}</p>
           </div>
@@ -57,7 +57,7 @@
                           <a href="{% url 'detail_artikel' artikel.id %}">{{ artikel.judul }}</a>
                         </h3>
                         <p class="card-description">
-                            {{ artikel.konten }}
+                            {{ artikel.konten|safe }}
                         </p>
                         <div class="author">
                           <img src="{% static 'landingpage/assets/img/james.jpg' %}" alt="..." class="avatar img-raised">

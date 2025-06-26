@@ -6,7 +6,7 @@
       <!-- Brand -->
       <div class="sidenav-header  d-flex  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="{% static 'dashboard/assets/img/brand/blue.png '%}" class="navbar-brand-img" alt="...">
+          <img src="{% static 'dashboard/assets/img/brand/Logo Toko Buku.png'%}" class="navbar-brand-img" alt="...">
         </a>
         <div class=" ml-auto ">
           <!-- Sidenav toggler -->
@@ -154,15 +154,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url "artikel_list" %}" aria-expanded="false" aria-controls="navbar-forms">
                 <i class="ni ni-single-copy-04 text-pink"></i>
-                <span class="nav-link-text">Artikel</span>
+                <span class="nav-link-text">Sinopsis</span>
               </a>
             </li>
-            <li class="nav-item">
+            {% comment %} <li class="nav-item">
               <a class="nav-link" href="../../pages/charts.html">
                 <i class="ni ni-chart-pie-35 text-info"></i>
                 <span class="nav-link-text">Charts</span>
               </a>
-            </li>
+            </li> {% endcomment %}
         
         {% if request.user|has_group:'operator' %}
           </ul>
@@ -184,7 +184,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url "admin_artikel_list" %}" target="_blank">
                 <i class="ni ni-single-copy-04"></i>
-                <span class="nav-link-text">Artikel</span>
+                <span class="nav-link-text">Sinopsis</span>
               </a>
             </li>
             <li class="nav-item">

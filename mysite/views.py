@@ -1,5 +1,12 @@
 from django.shortcuts import render, redirect
 from artikel.models import Kategori, Blogpost
+from django.contrib.auth.models import User
+
+from django.db.models.functions import TruncMonth
+from django.db.models import Count
+from django.utils.dateformat import DateFormat
+from django.utils.formats import date_format
+import json
 
 def welcome(request):
     template_name = "landingpage/index.html"
@@ -59,9 +66,46 @@ def dashboard(request):
     if not request.user.is_authenticated:
         return redirect('/auth-login')
     
+    user_count = User.objects.count()
+    artikel_count = Blogpost.objects.count()
+    kategori_count = Kategori.objects.count()
+    artikel = Blogpost.objects.all()
+    
+
+    # Hitung jumlah kategori per bulan
+    kategori_per_month = (
+        Kategori.objects.annotate(month=TruncMonth("created_at"))  # Sesuaikan dengan field tanggal
+        .values("month")
+        .annotate(count=Count("id"))
+        .order_by("month")
+    )
+
+    kategori_labels = [date_format(item["month"], "F") for item in kategori_per_month]
+    kategori_data = [item["count"] for item in kategori_per_month]
+
+     # Hitung jumlah user per bulan
+    user_per_month = (
+        User.objects.annotate(month=TruncMonth("date_joined"))
+        .values("month")
+        .annotate(count=Count("id"))
+        .order_by("month")
+    )
+
+    # Ubah hasil ke format label dan data untuk grafik
+    labels = [date_format(item["month"], "F Y") for item in user_per_month]
+    counts = [item["count"] for item in user_per_month]
+
     template_name = "dashboard/index.html"
     context = {
-        "title":"halaman kontak"
+        "title":"halaman kontak",
+        "user_count": user_count,
+        "artikel_count": artikel_count,
+        "kategori_count": kategori_count,
+        "kategori_chart_labels": json.dumps(kategori_labels),
+        "kategori_chart_data": json.dumps(kategori_data),
+        "user_chart_labels": json.dumps(labels),
+        "user_chart_data": json.dumps(counts),
+        "artikel": artikel,
     }
     return render(request, template_name, context)
 

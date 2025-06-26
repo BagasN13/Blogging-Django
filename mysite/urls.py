@@ -12,6 +12,7 @@ from mysite.authentication import login, logout, registrasi
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome, name="welcome"),
+    path('api-auth/', include('rest_framework.urls')),
     
     path('artikel/<int:id>', detail_artikel, name="detail_artikel"),
     path('artikel-not-found', not_found_artikel, name="not_found_artikel"),
@@ -22,6 +23,7 @@ urlpatterns = [
 
 
     path('dashboard/', include("artikel.urls")),
+    path('api/', include("artikel.urls_api")),
 
 
     ################# AUTH (Login dan Registrasi) ####################

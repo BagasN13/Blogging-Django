@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
+  <title>Form Register</title>
   <!-- Favicon -->
   <link rel="icon" href="{% static 'dashboard/assets/img/brand/favicon.png '%}" type="image/png">
   <!-- Fonts -->
@@ -23,8 +23,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="{% static 'dashboard/pages/dashboards/dashboard.html '%}">
-        <img src="{% static 'dashboard/assets/img/brand/white.png '%}">
+      <a class="navbar-brand">
+        <img src="{% static 'dashboard/assets/img/brand/WhiteToko.png '%}">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -109,7 +109,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <h1 class="text-white">Create an account</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+              <p class="text-lead text-white">Silahkan Buat Akun Untuk Mengakses Website Lebih Lanjut !</p>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
         <div class="col-lg-6 col-md-8">
           <div class="card bg-secondary border-0">
             <div class="card-header bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
+              {% comment %} <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
               <div class="text-center">
                 <a href="#" class="btn btn-neutral btn-icon mr-4">
                   <span class="btn-inner--icon"><img src="{% static 'dashboard/assets/img/icons/common/github.svg '%}"></span>
@@ -138,10 +138,10 @@
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
-            </div>
+            </div> {% endcomment %}
             <div class="card-body px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
+                <small>Sign up with credentials</small>
                 <small>{{ pesan }}</small>
               </div>
               <form role="form" method="POST">

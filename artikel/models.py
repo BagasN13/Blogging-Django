@@ -8,6 +8,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 class Kategori(models.Model):
     nama = models.CharField(max_length=200)
 
+    gambar = models.ImageField(upload_to='kategori/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 

@@ -45,7 +45,7 @@
               </div>
               <!-- Card body -->
               <div class="card-body">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                   <!-- Input groups with icon -->
                   <div class="row">
@@ -59,6 +59,16 @@
                           {{ forms.nama }}
                           {% comment %} <input class="form-control" placeholder="Nama Kategori" name="nama_kategori" type="text"> {% endcomment %}
                         </div>
+                      </div>
+
+                        <div class="form-group">
+                          <label for="{{ forms.gambar.id_for_label }}" class="form-label">Gambar Kategori</label>
+                          <div class="input-group">
+                            <span class="input-group-text"><i class="ni ni-image"></i></span>
+                            {{ forms.gambar }}
+                          </div>
+                        </div>
+
                         <div class="d-flex justify-context-end mt-4">
                             <button type="submit" name="button" class="btn bg-gradient-blue m-0 ms-2" style="color: white;">Save</button>
                         </div>

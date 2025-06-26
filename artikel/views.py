@@ -92,7 +92,7 @@ def admin_kategori_list(request):
 def admin_kategori_tambah(request):
     template_name = "dashboard/admin/kategori_forms.html"
     if request.method == "POST":
-        forms = KategoriForms(request.POST)
+        forms = KategoriForms(request.POST, request.FILES)
         if forms.is_valid():
             pub = forms.save(commit=False)
             pub.created_by = request.user
@@ -111,7 +111,7 @@ def admin_kategori_update(request, id_kategori):
     template_name = "dashboard/admin/kategori_forms.html"
     kategori = Kategori.objects.get(id=id_kategori)
     if request.method == "POST":
-        forms = KategoriForms(request.POST, instance=kategori)
+        forms = KategoriForms(request.POST, request.FILES, instance=kategori)
         if forms.is_valid():
             pub = forms.save(commit=False)
             pub.created_by = request.user
@@ -250,3 +250,4 @@ def admin_management_user_edit(request, user_id):
         
     }
     return render(request, template_name, context)
+

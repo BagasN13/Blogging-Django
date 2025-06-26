@@ -6,13 +6,18 @@ from artikel.models import Kategori, Blogpost
 class KategoriForms(forms.ModelForm):
     class Meta:
         model = Kategori
-        fields = ('nama',)
+        fields = ('nama', 'gambar')
         widgets = {
             "nama" : forms.TextInput(
                 attrs={
                     'class': 'form-control',
                     'required': True
                 }),
+            
+            "gambar": forms.ClearableFileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*'
+            }),
         }
 
 

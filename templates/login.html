@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
+  <title>Form Login</title>
   <!-- Favicon -->
   <link rel="icon" href="{% static 'dashboard/assets/img/brand/favicon.png '%}" type="image/png">
   <!-- Fonts -->
@@ -23,8 +24,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="{% static 'dashboard/pages/dashboards/dashboard.html '%}">
-        <img src="{% static 'dashboard/assets/img/brand/white.png '%}">
+      <a class="navbar-brand">
+        <img src="{% static 'dashboard/assets/img/brand/WhiteToko.png '%}">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -109,7 +110,7 @@
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
               <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p>
+              <p class="text-lead text-white">Selamat Datang Di Tampilan Login Toko Buku!</p>
             </div>
           </div>
         </div>
@@ -128,11 +129,11 @@
             <div class="card-header bg-transparent pb-5">
               <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
               <div class="btn-wrapper text-center">
-                <a href="#" class="btn btn-neutral btn-icon">
+                {% comment %} <a href="#" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon"><img src="{% static 'dashboard/assets/img/icons/common/github.svg '%}"></span>
                   <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="#" class="btn btn-neutral btn-icon">
+                </a> {% endcomment %}
+                <a href="{% provider_login_url 'google' process='login' %}" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon"><img src="{% static 'dashboard/assets/img/icons/common/google.svg '%}"></span>
                   <span class="btn-inner--text">Google</span>
                 </a>

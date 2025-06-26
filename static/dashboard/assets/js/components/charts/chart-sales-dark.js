@@ -10,49 +10,68 @@
 
 var SalesChart = (function() {
 
-	// Variables
+    // Variables
+    var $chart = $('#chart-sales-dark');
 
-	var $chart = $('#chart-sales-dark');
+    // Methods
+    function init($this) {
+        var salesChart = new Chart($this, {
+            type: 'line',
+            data: {
+                labels: window.userChartLabels || ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                datasets: [{
+                    label: 'Jumlah User',
+                    data: window.userChartData || [],
+                    borderColor: '#5e72e4',
+                    backgroundColor: 'rgba(94, 114, 228, 0.1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#5e72e4',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#5e72e4',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            color: '#32325d',
+                            zeroLineColor: '#32325d'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(item) {
+                            return 'Jumlah User: ' + item.yLabel;
+                        }
+                    }
+                }
+            }
+        });
 
+        // Save chart instance
+        $this.data('chart', salesChart);
+    }
 
-	// Methods
-
-	function init($this) {
-		var salesChart = new Chart($this, {
-			type: 'line',
-			options: {
-				scales: {
-					yAxes: [{
-						gridLines: {
-							color: Charts.colors.gray[700],
-							zeroLineColor: Charts.colors.gray[700]
-						},
-						ticks: {
-
-						}
-					}]
-				}
-			},
-			data: {
-				labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-				datasets: [{
-					label: 'Performance',
-					data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
-				}]
-			}
-		});
-
-		// Save to jQuery object
-
-		$this.data('chart', salesChart);
-
-	};
-
-
-	// Events
-
-	if ($chart.length) {
-		init($chart);
-	}
+    // Events
+    if ($chart.length) {
+        init($chart);
+    }
 
 })();

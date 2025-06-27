@@ -2,6 +2,7 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 from pathlib import Path
+import dj_database_url
 from decouple import config
 
 from django.contrib.messages import constants as messages
@@ -93,17 +94,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # } 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'artikel_blog',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+# Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'artikel_blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
+# Environment Railway
+ENVIRONMENT = config('ENVIRONMENT', default='development')
+ALLOWED_HOSTS = ['localhost', '']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

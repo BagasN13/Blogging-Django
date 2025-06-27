@@ -30,7 +30,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = [
-    'https://blogging-django.vercel.app/', # Ganti dengan domain Vercel Anda yang sebenarnya
+    'blogging-django.vercel.app', # Ganti dengan domain Vercel Anda yang sebenarnya
     '.vercel.app', # Ini akan mencakup semua subdomain vercel.app
     'localhost',
     '127.0.0.1',

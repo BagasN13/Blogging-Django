@@ -1,0 +1,44 @@
+# Python Specific
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+pip-log.txt
+.ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+*.bak
+
+# Django Specific
+db.sqlite3
+*.log
+staticfiles/  # Ini sangat penting! Folder hasil collectstatic, jangan di-commit.
+media/        # Jika Anda mengelola upload file, jangan commit ke Git.
+# Jika folder staticfiles atau media Anda berada di dalam mysite/, tambahkan juga ini:
+# mysite/staticfiles/
+# mysite/media/
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Vercel specific
+.vercel/
+
+# Other potential large files/folders not typically needed in deployment
+# Hapus komentar jika Anda menemukan folder ini di proyek Anda dan tidak diperlukan di Vercel
+# logs/
+# tmp/
+# .npm/
+# node_modules/ # Hanya jika Anda punya frontend JS di root yang sama
+# *.sqlite
+# *.db

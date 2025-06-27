@@ -4,7 +4,10 @@
     {
       "src": "mysite/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+      "config": {
+        "maxLambdaSize": "250mb",
+        "runtime": "python3.12"
+      }
     },
     {
       "src": "build_files.sh",
@@ -24,7 +27,6 @@
       "dest": "mysite/wsgi.py"
     }
   ],
-  "outputDirectory": "staticfiles",
-  "installCommand": "pip install -r requirements.txt",
+  "installCommand": "python3 -m pip install -r requirements.txt",
   "buildCommand": "./build_files.sh"
 }

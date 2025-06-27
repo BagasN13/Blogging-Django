@@ -1,13 +1,16 @@
 #!/bin/bash
 
+# Exit on error
+set -o errexit
+
 # Pastikan pip terinstal dan terbaru
-python -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
 # Instal semua dependensi
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 # Jalankan collectstatic
-python manage.py collectstatic --noinput --clear
+python3 mysite/manage.py collectstatic --noinput --clear
 
 # Jalankan migrasi database
-python manage.py migrate
+python3 mysite/manage.py migrate

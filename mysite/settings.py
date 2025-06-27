@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': 'postgresql://postgres:tAerrFpFamJpGhTxjBhlENUSPZlojhSN@postgres.railway.internal:5432/railway'
 }
 
 # Environment Railway

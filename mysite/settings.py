@@ -2,6 +2,7 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 from pathlib import Path
+from decouple import config
 
 from django.contrib.messages import constants as messages
 
@@ -22,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ni=513m&cb55oz-ufy4sw(^-xf*77=7ji*6nv2ayfasvcm-7yd'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -160,8 +161,8 @@ AUTHENTICATION_BACKENDS = (
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '846194182491-hc7kc5b39790ojdjs0mbtqaadnah2mqh.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': config('GOOGLE_CLIENT_ID'),
+            'secret': config('GOOGLE_CLIENT_SECRET'),
             'key': ''
         }
     }

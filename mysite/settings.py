@@ -163,7 +163,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static', # ATAU BASE_DIR / 'static' jika itu yang benar
+    BASE_DIR / 'static',
+    BASE_DIR / 'landingpage/assets'
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'

@@ -26,7 +26,7 @@
                     {{ a.konten|truncatewords_html:50|safe }}
                   </p>
                   <div class="author">
-                    <img src="{% static 'landingpage/assets/img/james.jpg '%}" alt="..." class="avatar img-raised">
+                    <img src="{% static 'landingpage/assets/img/james.jpg'%}" alt="..." class="avatar img-raised">
                     <div class="text">
                       <span class="name">{{ a.author }}</span>
                       <div class="meta">Drawn on 23 Jan</div>
@@ -50,7 +50,7 @@
                   {% if k.gambar %}
                   <div class="full-background" style="background-image: url('{{ k.gambar.url }}')"></div>
                   {% else %}
-                  <div class="full-background" style="background-image: url('{% static "landingpage/assets/img/default.jpg" %}')"></div>
+                  <div class="full-background" style="background-image: url('{% static "landingpage/assets/img/default.jpg"%}')"></div>
                   {% endif %}
                   <div class="card-body">
                     <div class="content-bottom">

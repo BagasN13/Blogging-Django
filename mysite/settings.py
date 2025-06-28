@@ -1,8 +1,7 @@
 import os
-# import pymysql
-# pymysql.install_as_MySQLdb()
+import pymysql
+pymysql.install_as_MySQLdb()
 from pathlib import Path
-import dj_database_url
 from decouple import config
 
 from django.contrib.messages import constants as messages
@@ -29,12 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = [
-    'blogging-django.vercel.app', # Ganti dengan domain Vercel Anda yang sebenarnya
-    '.vercel.app', # Ini akan mencakup semua subdomain vercel.app
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['BagasN13.pythonanywhere.com']
 
 # Application definition
 
@@ -59,7 +53,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,7 +67,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,12 +86,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# } 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -111,13 +104,6 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
-# Database
-DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
-}
-
-# Environment Railway
-ENVIRONMENT = config('ENVIRONMENT', default='development')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -161,18 +147,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-    BASE_DIR / 'landingpage/assets'
-]
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
-
-WHITENOISE_MANIFEST_STRICT = False
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 SITE_ID = 1
 
@@ -199,7 +176,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 
 # Default primary key field type
